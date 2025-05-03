@@ -68,15 +68,9 @@ const Header = ({ user }: { user: User | undefined }) => {
           </Link>
           <Link
             className="text-sm font-medium text-gray-500 hover:text-gray-900"
-            href="/"
+            href="/about"
           >
             About
-          </Link>
-          <Link
-            className="text-sm font-medium text-gray-500 hover:text-gray-900"
-            href="/"
-          >
-            Contact
           </Link>
         </div>
         <Link

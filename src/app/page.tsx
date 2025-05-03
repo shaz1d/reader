@@ -7,12 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  searchParams: { page: string };
+  searchParams?: { page?: string };
 };
 
 export default async function Home({ searchParams }: Props) {
   const search = await searchParams;
-  const page = parseInt(search.page) || 1;
+  const page = parseInt(search?.page || "1", 10);
 
   return (
     <>
