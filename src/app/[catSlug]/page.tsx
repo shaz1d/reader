@@ -13,7 +13,7 @@ type Props = {
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const page = parseInt(searchParams?.page || "1", 10);
-  const { catSlug } = await params;
+  const { catSlug } = params;
 
   return (
     <>
