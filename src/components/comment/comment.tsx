@@ -11,12 +11,13 @@ const Comment = ({ comment }: CommentProps) => {
   return (
     <div className="flex gap-3 ">
       <Image
-        className="rounded-full h-10 w-10 object-cover"
-        src="/author.jpg"
+        className="rounded-full h-10 w-10"
+        src={comment.user.image ? comment.user.image : "/author.jpg"}
         quality={100}
         height={40}
         width={40}
         alt="author"
+        objectFit="cover"
       />
       <div className="mt-1">
         <p>

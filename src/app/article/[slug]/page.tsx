@@ -33,11 +33,12 @@ const SingleArticle = async ({ params }: SignleArtcileProps) => {
 
             <div className="flex gap-3 mt-4 justify-center">
               <Image
-                className="rounded-full h-10 w-10 object-cover"
+                className="rounded-full h-10 w-10 "
                 src={article.user.image ? article.user.image : "/avatar.jpg"}
                 quality={100}
                 height={40}
                 width={40}
+                objectFit="cover"
                 alt="author"
               />
               <div>
@@ -49,11 +50,12 @@ const SingleArticle = async ({ params }: SignleArtcileProps) => {
             </div>
           </div>
           <Image
-            src="/designer-work-office.jpg"
-            className="h-[70vh] object-cover object-bottom mt-10 rounded-3xl"
+            src={article.img ? article.img : "/designer-work-office.jpg"}
+            className="h-[70vh] object-bottom mt-10 rounded-3xl"
             height={500}
             width={1900}
             alt=""
+            objectFit="cover"
           />
         </div>
         <div className="mx-auto max-w-7xl mt-8">

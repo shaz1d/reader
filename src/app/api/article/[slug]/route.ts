@@ -8,8 +8,11 @@ export async function GET(
   const { slug } = params;
 
   try {
-    const article = await db.post.findUnique({
+    const article = await db.post.update({
       where: { slug },
+      data: {
+        views: { increment: 1 },
+      },
     });
 
     return NextResponse.json({

@@ -9,9 +9,10 @@ import {
 
 import SignInGithub from "@/components/sign-in-github";
 import SignInGoogle from "@/components/sign-in-google";
-import { Icons } from "@/components/icons";
+
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import Image from "next/image";
 
 const page = async () => {
   const session = await auth();
@@ -19,12 +20,17 @@ const page = async () => {
     return redirect("/");
   }
   return (
-    <section className="absolute inset-0">
-      <div className="min-h-full flex items-center justify-center">
+    <section className="">
+      <div className="min-h-[80vh] flex items-center justify-center">
         <Card className="max-w-xl w-full">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl flex items-center justify-center gap-2 mb-6">
-              <Icons.newLogo className=" size-5" /> Quizo
+              <Image
+                src="/Reader-logo-dark.svg"
+                height={20}
+                width={100}
+                alt="Reader-logo"
+              />
             </CardTitle>
             <CardTitle className="text-2xl">Welcome Back!</CardTitle>
             <CardDescription>

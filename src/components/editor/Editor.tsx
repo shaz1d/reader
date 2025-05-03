@@ -9,7 +9,11 @@ import Highlight from "@tiptap/extension-highlight";
 import Heading from "@tiptap/extension-heading";
 import MenuBar from "./MenuBar";
 
-export default function Editor() {
+type EditorProps = {
+  content: string;
+  onChange: (content: string) => void;
+};
+export default function Editor({ content, onChange }: EditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -24,6 +28,7 @@ export default function Editor() {
           },
         },
       }),
+
       Heading.configure({
         levels: [1, 2, 3],
       }),
@@ -32,11 +37,15 @@ export default function Editor() {
       }),
       Highlight,
     ],
-    content: "Article description",
+    content: content,
     editorProps: {
       attributes: {
         class: "min-h-[156px] border rounded-md bg-slate-50 py-2 px-3",
       },
+    },
+    onUpdate: ({ editor }) => {
+      // console.log(editor.getHTML());
+      onChange(editor.getHTML());
     },
   });
 

@@ -1,14 +1,15 @@
 import React from "react";
 import Article from "../article/Article";
-import { getArticlePerPage } from "@/lib/actions";
+import { getArticleByCat } from "@/lib/actions";
 import Pagination from "../pagination/Pagination";
 
 type Props = {
   page: number;
+  catSlug: string;
 };
 
-const ArticleList = async ({ page }: Props) => {
-  const { articles, count } = await getArticlePerPage(page);
+const CatArticleList = async ({ page, catSlug }: Props) => {
+  const { articles, count } = await getArticleByCat(page, catSlug);
 
   const POST_PER_PAGE = 3;
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
@@ -24,4 +25,4 @@ const ArticleList = async ({ page }: Props) => {
   );
 };
 
-export default ArticleList;
+export default CatArticleList;

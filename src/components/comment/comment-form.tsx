@@ -30,7 +30,7 @@ export default function CommentForm({ slug }: { slug: string }) {
         <input
           type="submit"
           value="Submit"
-          className="px-8 py-3 rounded-full bg-gray-950 text-white absolute right-3 bottom-4"
+          className="px-8 py-3 rounded-full bg-gray-950 text-white absolute right-3 bottom-4 cursor-pointer"
         />
       </form>
       {visible && state?.error && <p className="text-red-500">{state.error}</p>}

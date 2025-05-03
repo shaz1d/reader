@@ -1,13 +1,20 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { User } from "next-auth";
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 import { IconEdit, IconMenu2, IconX } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Header = ({ user }: { user: User | undefined }) => {
@@ -87,50 +94,50 @@ const Header = ({ user }: { user: User | undefined }) => {
           <div className="flex items-center gap-2">
             {user ? (
               <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Avatar>
-                  <AvatarImage src={user.image as string} />
-                  <AvatarFallback>{user.name?.charAt(0)}</AvatarFallback>
-                </Avatar>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" alignOffset={-4}>
-                <DropdownMenuLabel className="p-0 font-normal">
-                  <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                    <Avatar className="h-8 w-8 rounded-lg">
-                      <AvatarImage
-                        src={user.image as string}
-                        alt={user.name as string}
-                      />
-                      <AvatarFallback className="rounded-lg">
-                        {user.name?.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-semibold">
-                        {user.name}
-                      </span>
-                      <span className="truncate text-xs">{user.email}</span>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src={user.image as string} />
+                    <AvatarFallback>{user.name?.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" alignOffset={-4}>
+                  <DropdownMenuLabel className="p-0 font-normal">
+                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                      <Avatar className="h-8 w-8 rounded-lg">
+                        <AvatarImage
+                          src={user.image as string}
+                          alt={user.name as string}
+                        />
+                        <AvatarFallback className="rounded-lg">
+                          {user.name?.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="grid flex-1 text-left text-sm leading-tight">
+                        <span className="truncate font-semibold">
+                          {user.name}
+                        </span>
+                        <span className="truncate text-xs">{user.email}</span>
+                      </div>
                     </div>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                <button
-                onClick={() => signOut()}
-                className="flex items-center gap-1 w-full justify-center cursor-pointer font-semibold font-[family-name:var(--font-geist-sans)] px-6 py-3 border border-gray-300 rounded-xl text-sm hover:bg-gray-950 hover:text-white transition-colors"
-              >
-                <span>Log Out</span>
-              </button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <button
+                      onClick={() => signOut()}
+                      className="flex items-center gap-1 w-full justify-center cursor-pointer font-semibold font-[family-name:var(--font-geist-sans)] px-6 py-3 border border-gray-300 rounded-xl text-sm hover:bg-gray-950 hover:text-white transition-colors"
+                    >
+                      <span>Log Out</span>
+                    </button>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
-              <button
-                onClick={() => signIn("github")}
-                className="flex items-center gap-1 cursor-pointer font-semibold font-[family-name:var(--font-geist-sans)] px-6 py-3 border border-gray-300 rounded-xl text-sm hover:bg-gray-950 hover:text-white transition-colors"
-              >
-                <span>Log In</span>
-              </button>
+              <Link href="/login">
+                {" "}
+                <button className="flex items-center gap-1 cursor-pointer font-semibold font-[family-name:var(--font-geist-sans)] px-6 py-3 border border-gray-300 rounded-xl text-sm hover:bg-gray-950 hover:text-white transition-colors">
+                  <span>Log In</span>
+                </button>
+              </Link>
             )}
           </div>
 

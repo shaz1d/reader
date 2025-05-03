@@ -15,12 +15,13 @@ const Article = ({ data }: ArticleProps) => {
     <div className="py-7 border-b border-gray-300 last:border-0">
       <div className="flex gap-3 mb-4">
         <Image
-          className="rounded-full h-10 w-10 object-cover"
+          className="rounded-full h-10 w-10 "
           src={data.user.image ? data.user.image : "/avatar.jpg"}
           quality={100}
           height={40}
           width={40}
           alt="author"
+          objectFit="cover"
         />
         <div>
           <p>
@@ -42,12 +43,14 @@ const Article = ({ data }: ArticleProps) => {
           <Link href={`/article/${data.slug}`}>
             <h3 className="text-2xl font-semibold capitalize">{data.title}</h3>
           </Link>
-          <div
-            className="text-sm text-gray-600"
-            dangerouslySetInnerHTML={{
-              __html: data.desc.split(" ").slice(0, 40).join(" ") + "...",
-            }}
-          />
+
+          <p className="text-sm text-gray-600">
+            {data.desc
+              .replace(/<[^>]*>/g, "")
+              .split(" ")
+              .slice(0, 40)
+              .join(" ") + "..."}
+          </p>
 
           <div className="flex gap-2 mt-2">
             <Link
@@ -59,11 +62,12 @@ const Article = ({ data }: ArticleProps) => {
           </div>
         </div>
         <Image
-          src="/designer-work-office.jpg"
-          className="rounded-2xl object-cover"
+          src={data.img ? data.img : ""}
+          className="rounded-2xl "
           width={250}
           height={100}
           alt=""
+          objectFit="cover"
         />
       </div>
     </div>
