@@ -7,13 +7,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  params: { catSlug: string };
-  searchParams?: { page?: string };
+  params: Promise<{ catSlug: string }>;
+  searchParams: Promise<{ page?: string }>;
 };
 
 export default async function CategoryPage({ params, searchParams }: Props) {
-  const page = parseInt(searchParams?.page || "1", 10);
-  const { catSlug } = params;
+  const search = await searchParams;
+  const page = parseInt(search.page || "1", 10);
+  const { catSlug } = await params;
 
   return (
     <>
