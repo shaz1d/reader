@@ -8,12 +8,12 @@ import Link from "next/link";
 
 type Props = {
   params: Promise<{ catSlug: string }>;
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page: string }>;
 };
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const search = await searchParams;
-  const page = parseInt(search.page || "1", 10);
+  const page = parseInt(search.page);
   const { catSlug } = await params;
 
   return (
